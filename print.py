@@ -48,8 +48,6 @@ def printToInky(temperature, summary, iconType):
     img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT), inky_display.BLACK)
     draw = ImageDraw.Draw(img)
 
-    # draw.rectangle((0,0,inky_display.WIDTH, inky_display.HEIGHT), inky_display.BLACK)
-
     temperatureFont = ImageFont.truetype(FredokaOne, 22)
     draw.text((10, 10), temperature, inky_display.WHITE, temperatureFont)
 
@@ -60,6 +58,9 @@ def printToInky(temperature, summary, iconType):
         if iconType in icon_map[icon]:
             weather_icon = icon
             break
+
+    print(icons[weather_icon])
+    print(masks[weather_icon])
 
     img.paste(icons[weather_icon], (28, 36), masks[weather_icon])
 

@@ -61,7 +61,7 @@ def printToInky(temperature, summary, iconType):
             weather_icon = icon
             break
 
-    draw.paste(icons[weather_icon], (28, 36), masks[weather_icon])
+    img.paste(icons[weather_icon], (28, 36), masks[weather_icon])
 
     inky_display.set_image(img)
     inky_display.show()

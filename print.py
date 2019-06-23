@@ -64,5 +64,11 @@ def printToInky(temperature, summary, iconType):
 
     img.paste(icons[weather_icon], (28, 36), masks[weather_icon])
 
+    if weather_icon is not None:
+        img.paste(icons[weather_icon], (28, 36), masks[weather_icon])
+
+    else:
+        draw.text((28, 36), "?", inky_display.YELLOW, font=summaryFont)
+
     inky_display.set_image(img)
     inky_display.show()

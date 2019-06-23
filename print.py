@@ -44,7 +44,7 @@ icon_map = {
     "wind": ["wind"]
 }
 
-def printToInky(temperature, summary, icon):
+def printToInky(temperature, summary, iconType):
     img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT))
     draw = ImageDraw.Draw(img)
 
@@ -57,7 +57,7 @@ def printToInky(temperature, summary, icon):
     draw.text((10, 40), summary, inky_display.WHITE, summaryFont)
 
     for icon in icon_map:
-        if summary in icon_map[icon]:
+        if iconType in icon_map[icon]:
             weather_icon = icon
             break
 

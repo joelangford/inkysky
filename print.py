@@ -45,7 +45,8 @@ icon_map = {
 }
 
 def printToInky(temperature, summary, iconType):
-    img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT), (0, 0, 0))
+    BLACK = (0, 0, 0)
+    img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT), BLACK)
     draw = ImageDraw.Draw(img)
 
     # draw.rectangle((0,0,inky_display.WIDTH, inky_display.HEIGHT), inky_display.BLACK)

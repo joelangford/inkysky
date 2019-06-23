@@ -20,8 +20,7 @@ def create_mask(source, mask=(inky_display.WHITE, inky_display.BLACK, inky_displ
             p = source.getpixel((x, y))
             if p in mask:
                 mask_image.putpixel((x, y), 255)
-
-return mask_image
+                return mask_image
 
 icons = {}
 masks = {}

@@ -17,10 +17,10 @@ def printToInky(temperature, summary):
     summaryFont = ImageFont.truetype(FredokaOne, 12)
     draw.text((10, 40), summary, inky_display.WHITE, summaryFont)
 
-    icon = Image.open("icon-sun.png")
+    icon = Image.open("icons/icon-sun.png")
     # get the correct size
     x, y = icon.size
-    draw.paste(icon, (0,50,x,y))
+    draw.bitmap((0,50,x,y),icon)
 
     inky_display.set_image(img)
     inky_display.show()

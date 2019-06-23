@@ -22,9 +22,10 @@ def updateWeather(sc):
 
     nextHourData = response.json()['minutely']['data']
     nextHourSummary = response.json()['minutely']['summary']
-    checkForRain(nextHourData)
+    icon = response.json()['currently']['icon']
+    # checkForRain(nextHourData)
 
-    printToInky(str(curentTempC) + " °C", nextHourSummary)
+    printToInky(str(curentTempC) + " °C", nextHourSummary, icon)
 
     s.enter(120, 1, updateWeather, (sc,))
 

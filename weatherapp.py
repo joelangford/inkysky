@@ -15,7 +15,7 @@ def checkForRain(data):
 s = sched.scheduler(time.time, time.sleep)
 
 def updateWeather(sc):
-    response = requests.get(f"https://api.darksky.net/forecast/7b0d66c29543af4b6eadef1d236e2fc8/{newcastleLngLat}")
+    response = requests.get("https://api.darksky.net/forecast/7b0d66c29543af4b6eadef1d236e2fc8/" + londonLngLat)
     currentTempF = response.json()['currently']['temperature']
     curentTempC = round(convertToCelcius(currentTempF),2)
 

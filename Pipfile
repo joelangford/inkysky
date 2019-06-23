@@ -1,16 +1,14 @@
 [[source]]
-name = "pypi"
-url = "https://pypi.org/simple"
+name = "Inky Sky"
+url = "https://github.com/joelangford/inkysky"
 verify_ssl = true
 
 [dev-packages]
 
 [packages]
 requests = "*"
-sched = "*"
 inky = "*"
 pillow = "*"
-font-fredoka-one = "*"
 
 [requires]
 python_version = "3.5.3"

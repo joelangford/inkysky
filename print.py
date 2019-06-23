@@ -9,6 +9,8 @@ def printToInky(temperature, summary):
     img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT))
     draw = ImageDraw.Draw(img)
 
+    draw.rectangle((0,0,inky_display.WIDTH, inky_display.HEIGHT), inky_display.BLACK)
+
     temperatureFont = ImageFont.truetype(FredokaOne, 22)
     draw.text((10, 10), temperature, inky_display.WHITE, temperatureFont)
 

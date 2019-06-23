@@ -9,7 +9,7 @@ verify_ssl = true
 requests = "*"
 sched = "*"
 inky = "*"
-pil = "*"
+pillow = "*"
 font-fredoka-one = "*"
 
 [requires]

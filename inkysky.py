@@ -15,6 +15,6 @@ w, h = font.getsize(message)
 x = (inky_display.WIDTH / 2) - (w / 2)
 y = (inky_display.HEIGHT / 2) - (h / 2)
 
-draw.text((x, y), message, inky_display.BLACK, font)
+draw.text((x, y), message, inky_display.RED, font)
 inky_display.set_image(img)
 inky_display.show()

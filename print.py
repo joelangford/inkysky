@@ -13,8 +13,8 @@ def printToInky(text):
 
     message = text
     w, h = font.getsize(message)
-    x = (inky_display.WIDTH / 2) - (w / 2)
-    y = (inky_display.HEIGHT / 2) - (h / 2)
+    x = 10
+    y = 10
 
     draw.text((x, y), message, inky_display.BLACK, font)
     inky_display.set_image(img)

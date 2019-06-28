@@ -44,7 +44,7 @@ icon_map = {
 }
 
 def printToInky(temperature, summary, iconType):
-    img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT), inky_display.WHITE)
+    img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT), inky_display.BLACK)
     draw = ImageDraw.Draw(img)
 
     temperatureFont = ImageFont.truetype(FredokaOne, 22)

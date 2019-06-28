@@ -32,7 +32,6 @@ for icon in glob.glob("icons/icon-*.png"):
     icons[icon_name] = icon_image
     masks[icon_name] = create_mask(icon_image)
 
-
 # This maps the weather summary from Dark Sky
 # to the appropriate weather icons
 icon_map = {
@@ -45,7 +44,7 @@ icon_map = {
 }
 
 def printToInky(temperature, summary, iconType):
-    img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT), inky_display.BLACK)
+    img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT), inky_display.WHITE)
     draw = ImageDraw.Draw(img)
 
     temperatureFont = ImageFont.truetype(FredokaOne, 22)
@@ -61,8 +60,6 @@ def printToInky(temperature, summary, iconType):
 
     print(icons[weather_icon])
     print(masks[weather_icon])
-
-    img.paste(icons[weather_icon], (28, 36), masks[weather_icon])
 
     if weather_icon is not None:
         img.paste(icons[weather_icon], (28, 36), masks[weather_icon])

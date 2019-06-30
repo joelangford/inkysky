@@ -62,13 +62,8 @@ def printToInky(temperature, summary, iconType):
             weather_icon = icon
             break
 
-    print (', '.join(icons))
-    print (', '.join(masks))
-    print(weather_icon)
-
-    iconXposition = inky_display.WIDTH - 28
-
     if weather_icon is not None:
+        iconXposition = inky_display.WIDTH - icons[weather_icon].size[0]
         img.paste(icons[weather_icon], (iconXposition, 0), masks[weather_icon])
 
     else:

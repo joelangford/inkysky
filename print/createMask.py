@@ -1,3 +1,5 @@
+from PIL import Image
+
 def createMask(source, mask=(inky_display.WHITE, inky_display.BLACK, inky_display.RED)):
     """Create a transparency mask.
 

@@ -2,7 +2,7 @@ import glob
 from inky import InkyPHAT
 from PIL import Image, ImageFont, ImageDraw
 from font_fredoka_one import FredokaOne
-from createMask import createMask
+from print.createMask import createMask
 
 inky_display = InkyPHAT("yellow")
 inky_display.set_border(inky_display.BLACK)

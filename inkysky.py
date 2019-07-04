@@ -19,15 +19,10 @@ def updateWeather(sc):
     nextHourSummary = response.json()['minutely']['summary']
     icon = response.json()['currently']['icon']
 
-    percipGraphHour(minutelyData)
+    # percipGraphHour(minutelyData)
     temperatureGraphData = temperatureGraphDay(hourlyData)
 
-    printToInky(
-        str(curentTempC) + " °C",
-        nextHourSummary,
-        icon,
-        temperatureGraphData
-        )
+    printToInky(str(curentTempC) + " °C", nextHourSummary, icon, temperatureGraphData)
 
     s.enter(120, 1, updateWeather, (sc,))
 

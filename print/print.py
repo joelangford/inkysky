@@ -4,6 +4,7 @@ from PIL import Image, ImageFont, ImageDraw
 from font_fredoka_one import FredokaOne
 from print.createMask import createMask
 
+heeboFontPath = "fonts/heebo/Heebo-Regular.ttf"
 inky_display = InkyPHAT("yellow")
 inky_display.set_border(inky_display.BLACK)
 
@@ -35,7 +36,7 @@ def buildGraph(data, high, low):
     draw = ImageDraw.Draw(graph)
     barFrameWidth = int(round(inky_display.WIDTH / 12))
     barWidth = barFrameWidth - 4
-    graphFont = ImageFont.truetype(FredokaOne, 10)
+    graphFont = ImageFont.truetype(heeboFontPath, 8)
     xOffset = 4
     
     for idx, entry in enumerate(data):

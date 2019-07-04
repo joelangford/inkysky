@@ -2,7 +2,7 @@ import requests, sched, time
 from utils.convertToCelcius import convertToCelcius;
 from modules.percipGraphHour import percipGraphHour;
 from modules.temperatureGraphDay import temperatureGraphDay;
-# from print.print import printToInky
+from print.print import printToInky
 
 londonLngLat = '51.5618462,-0.017913'
 newcastleLngLat = '54.9771,-1.6142'
@@ -22,14 +22,12 @@ def updateWeather(sc):
     percipGraphHour(minutelyData)
     temperatureGraphData = temperatureGraphDay(hourlyData)
 
-    print(temperatureGraphData)
-
-    # printToInky(
-    #     str(curentTempC) + " °C",
-    #     nextHourSummary,
-    #     icon,
-    #     temperatureGraphData
-    #     )
+    printToInky(
+        str(curentTempC) + " °C",
+        nextHourSummary,
+        icon,
+        temperatureGraphData
+        )
 
     s.enter(120, 1, updateWeather, (sc,))
 

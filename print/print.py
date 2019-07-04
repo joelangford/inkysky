@@ -29,20 +29,29 @@ icon_map = {
 }
 
 def buildGraph(data, high, low):
-    maxBarHeight = 40
-    graph = Image.new("P", (inky_display.WIDTH, maxBarHeight), inky_display.BLACK)
+    graphAreaHeight = 40
+    maxBarHeight = 30
+    graph = Image.new("P", (inky_display.WIDTH, graphAreaHeight), inky_display.BLACK)
     draw = ImageDraw.Draw(graph)
-    barFrameWidth = int(inky_display.WIDTH / 12)
+    barFrameWidth = int(round(inky_display.WIDTH / 12))
     barWidth = barFrameWidth - 4
+    graphFont = ImageFont.truetype(FredokaOne, 10)
+    xOffset = 4
     
     for idx, entry in enumerate(data):
+        temperature = str(round(data[entry]['temperature'])) + "°"
         percent = (data[entry]['temperature'] / high) * 100
-        barX = int((barFrameWidth * idx) + (barFrameWidth / 2))
+        hour = (data[entry]['time'])
+        
+        barX = int((barFrameWidth * idx) + (barFrameWidth / 2) - xOffset)
         barY = int(maxBarHeight - (maxBarHeight * (percent / 100)))
-        print(barX)
-        print(maxBarHeight)
-        draw.line((barX, barY, barX, maxBarHeight), inky_display.RED, barWidth) 
-    
+        draw.line((barX, barY, barX, maxBarHeight), inky_display.RED, barWidth)  
+
+        temperatureTextSizeX, temperatureTextSizeY = graphFont.getsize(temperature)
+        hourTextSizeX, hourTextSizeY = graphFont.getsize(hour)
+
+        draw.text((barX - (hourTextSizeX / 2), barY), temperature, inky_display.BLACK, graphFont, align="center")
+        draw.text((barX - (hourTextSizeX / 2), maxBarHeight), hour, inky_display.WHITE, graphFont, align="center")
     return graph
 
 def printToInky(temperature, summary, iconType, temperatureGraphData):

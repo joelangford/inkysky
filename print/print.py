@@ -4,7 +4,7 @@ from PIL import Image, ImageFont, ImageDraw
 from font_fredoka_one import FredokaOne
 from print.createMask import createMask
 
-heeboFontPath = "fonts/heebo/Heebo-Regular.ttf"
+teenyTinyPixelsFontPath = "fonts/teeny-tiny-pixls.otf"
 inky_display = InkyPHAT("yellow")
 inky_display.set_border(inky_display.BLACK)
 
@@ -36,7 +36,7 @@ def buildGraph(data, high, low):
     draw = ImageDraw.Draw(graph)
     barFrameWidth = int(round(inky_display.WIDTH / 12))
     barWidth = barFrameWidth - 4
-    graphFont = ImageFont.truetype(heeboFontPath, 8)
+    graphFont = ImageFont.truetype(teenyTinyPixelsFontPath, 5)
     xOffset = 4
     
     for idx, entry in enumerate(data):
@@ -51,8 +51,8 @@ def buildGraph(data, high, low):
         temperatureTextSizeX, temperatureTextSizeY = graphFont.getsize(temperature)
         hourTextSizeX, hourTextSizeY = graphFont.getsize(hour)
 
-        draw.text((barX - (hourTextSizeX / 2), barY), temperature, inky_display.BLACK, graphFont, align="center")
-        draw.text((barX - (hourTextSizeX / 2), maxBarHeight), hour, inky_display.WHITE, graphFont, align="center")
+        draw.text((barX - (temperatureTextSizeX / 3), barY + 2), temperature, inky_display.BLACK, graphFont)
+        draw.text((barX - (hourTextSizeX / 3), maxBarHeight + 4), hour, inky_display.WHITE, graphFont)
     return graph
 
 def printToInky(temperature, summary, iconType, temperatureGraphData):
@@ -60,10 +60,10 @@ def printToInky(temperature, summary, iconType, temperatureGraphData):
     draw = ImageDraw.Draw(img)
 
     temperatureFont = ImageFont.truetype(FredokaOne, 22)
-    draw.text((10, 10), temperature, inky_display.WHITE, temperatureFont)
+    draw.text((5, 5), temperature, inky_display.WHITE, temperatureFont)
 
     summaryFont = ImageFont.truetype(FredokaOne, 12)
-    draw.text((10, 40), summary, inky_display.WHITE, summaryFont)
+    draw.text((5, 30), summary, inky_display.WHITE, summaryFont)
 
     for icon in icon_map:
         if iconType in icon_map[icon]:

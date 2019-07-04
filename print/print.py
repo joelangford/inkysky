@@ -2,29 +2,10 @@ import glob
 from inky import InkyPHAT
 from PIL import Image, ImageFont, ImageDraw
 from font_fredoka_one import FredokaOne
+from print.createMask import createMask
 
 inky_display = InkyPHAT("yellow")
 inky_display.set_border(inky_display.BLACK)
-
-def create_mask(source, mask=(inky_display.WHITE, inky_display.BLACK, inky_display.RED)):
-    """Create a transparency mask.
-
-    Takes a paletized source image and converts it into a mask
-    permitting all the colours supported by Inky pHAT (0, 1, 2)
-    or an optional list of allowed colours.
-
-    :param mask: Optional list of Inky pHAT colours to allow.
-
-    """
-    mask_image = Image.new("1", source.size)
-    w, h = source.size
-    for x in range(w):
-        for y in range(h):
-            p = source.getpixel((x, y))
-            if p in mask:
-                mask_image.putpixel((x, y), 255)
-
-    return mask_image
 
 icons = {}
 masks = {}
@@ -34,7 +15,7 @@ for icon in glob.glob("icons/icon-*.png"):
     icon_name = icon.split("icon-")[1].replace(".png", "")
     icon_image = Image.open(icon)
     icons[icon_name] = icon_image
-    masks[icon_name] = create_mask(icon_image)
+    masks[icon_name] = createMask(icon_image)
 
 # This maps the weather summary from Dark Sky
 # to the appropriate weather icons

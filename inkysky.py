@@ -1,6 +1,7 @@
 import requests, sched, time
 from utils.convertToCelcius import convertToCelcius;
 from modules.percipGraphHour import percipGraphHour;
+from modules.temperatureGraphDay import temperatureGraphDay;
 from print.print import printToInky
 
 londonLngLat = '51.5618462,-0.017913'
@@ -13,13 +14,15 @@ def updateWeather(sc):
     currentTempF = response.json()['currently']['temperature']
     curentTempC = round(convertToCelcius(currentTempF),2)
 
-    nextHourData = response.json()['minutely']['data']
+    minutelyData = response.json()['minutely']['data']
+    hourlyData = response.json()['hourly']['data']
     nextHourSummary = response.json()['minutely']['summary']
     icon = response.json()['currently']['icon']
 
-    percipGraphHour(nextHourData)
+    # percipGraphHour(minutelyData)
+    temperatureGraphData = temperatureGraphDay(hourlyData)
 
-    printToInky(str(curentTempC) + " °C", nextHourSummary, icon)
+    printToInky(str(curentTempC) + " °C", nextHourSummary, icon, temperatureGraphData)
 
     s.enter(120, 1, updateWeather, (sc,))
 

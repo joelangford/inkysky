@@ -1,2 +1,2 @@
 # inkysky
-Dark Sky intergration for InkyPhat Raspberry Zero display
+Dark Sky intergration for InkyPhat Raspberry Pi display

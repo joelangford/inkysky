@@ -38,15 +38,15 @@ def buildGraph(data, high, low):
     barWidth = barFrameWidth - 4
     graphFont = ImageFont.truetype(teenyTinyPixelsFontPath, 5)
     xOffset = 4
-    
+
     for idx, entry in enumerate(data):
         temperature = str(round(data[entry]['temperature'])) + "°"
         percent = (data[entry]['temperature'] / high) * 100
-        hour = (data[entry]['time'])
-        
+        hour = str(data[entry]['time'])
+
         barX = int((barFrameWidth * idx) + (barFrameWidth / 2) - xOffset)
         barY = int(maxBarHeight - (maxBarHeight * (percent / 100)))
-        draw.line((barX, barY, barX, maxBarHeight), inky_display.RED, barWidth)  
+        draw.line((barX, barY, barX, maxBarHeight), inky_display.RED, barWidth)
 
         temperatureTextSizeX, temperatureTextSizeY = graphFont.getsize(temperature)
         hourTextSizeX, hourTextSizeY = graphFont.getsize(hour)
@@ -76,7 +76,7 @@ def printToInky(temperature, summary, iconType, temperatureGraphData):
 
     else:
         draw.text((28, 36), "?", inky_display.YELLOW, font=summaryFont)
-    
+
     graph = buildGraph(temperatureGraphData[0], temperatureGraphData[1], temperatureGraphData[2])
     img.paste(graph, (0, inky_display.HEIGHT - 40))
 

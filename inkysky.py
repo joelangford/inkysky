@@ -7,6 +7,9 @@ from print.print import printToInky
 apiKey = ''
 londonLngLat = '51.5618462,-0.017913'
 newcastleLngLat = '54.9771,-1.6142'
+edinburghLngLat = '55.9533,-3.1884'
+belfastLngLat = '54.5964,-5.9303'
+baltimoreLngLat = '39.2909,-76.610'
 s = sched.scheduler(time.time, time.sleep)
 
 try:
@@ -31,8 +34,8 @@ def updateWeather(sc):
 
     printToInky(str(curentTempC) + " °C", nextHourSummary, icon, temperatureGraphData)
 
-    s.enter(120, 1, updateWeather, (sc,))
+    s.enter(300, 1, updateWeather, (sc,))
 
-if len(apiKey) > 1: 
+if len(apiKey) > 1:
     s.enter(0, 1, updateWeather, (s,))
     s.run()

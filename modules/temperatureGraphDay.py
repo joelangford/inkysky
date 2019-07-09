@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from datetime import datetime
 from utils.convertToCelcius import convertToCelcius;
 
@@ -9,7 +10,7 @@ def temperatureGraphDay(data):
 
     for idx, hour in enumerate(data):
         degreesCelcius = convertToCelcius(hour['temperature'])
-        time = datetime.utcfromtimestamp(hour['time']).strftime('%H')
+        time = int(datetime.utcfromtimestamp(hour['time']).strftime('%H'))
 
         if degreesCelcius > high:
             high = round(degreesCelcius, 1)
@@ -22,7 +23,7 @@ def temperatureGraphDay(data):
 
         if idx % 2 == 0:
             temperatures[idx] = {
-                'time' : time,
+                'time' : round(time, -1),
                 'temperature': degreesCelcius
             }
         else:

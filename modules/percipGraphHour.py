@@ -1,5 +1,24 @@
+from collections import OrderedDict
+from datetime import datetime
+
 def percipGraphHour(data):
-    for minute in data:
-        if minute['precipProbability'] > 0.5:
-            print(minute['precipProbability'] * 100,"% chance of rain starting in",((minute['time'] - time.time())/ 60),"minutes")
-            break
+    precipitation = OrderedDict()
+
+    for idx, minute in enumerate(data):
+        precipIntensityPercentage = round((minute['precipIntensity']) * 1000 / 3)
+        time = int(datetime.utcfromtimestamp(minute['time']).strftime('%M'))
+        # print(str(precipIntensityPercentage) + ' ' + str(time))
+
+        if time % 5 == 0:
+            precipitation[time] = {
+                'time' : time,
+                'precipIntensityPercentage': precipIntensityPercentage
+            }
+        else:
+            targetIndex = time - (time % 5)
+            print(targetIndex)
+            # precipitation[targetIndex]['precipIntensityPercentage'] = round((precipitation[targetIndex]['precipIntensityPercentage'] + precipIntensityPercentage) / (time % 5), 1)
+
+    print(precipitation)
+
+    return
